@@ -1,65 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <!-- Basic -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
-   
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
- 
-     <!-- Site Metas -->
-    <title>Zepplin - Dynamic Bus Routes</title>  
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<!-- Basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <!-- Site Icons -->
-    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<!-- Mobile Metas -->
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../stylesheets/css/bootstrap.min.css">
-    <!-- Site CSS -->
-    <link rel="stylesheet" href="../stylesheets/style.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="../stylesheets/css/responsive.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../stylesheets/css/custom.css">
-	<script src="../js/modernizr.js"></script> <!-- Modernizr -->
+<!-- Site Metas -->
+<title>Zepplin - Dynamic Bus Routes</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <!--[if lt IE 9]>
+<!-- Site Icons -->
+<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="../stylesheets/css/bootstrap.min.css">
+<!-- Site CSS -->
+<link rel="stylesheet" href="../stylesheets/style.css">
+<!-- Responsive CSS -->
+<link rel="stylesheet" href="../stylesheets/css/responsive.css">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="../stylesheets/css/custom.css">
+<script src="../js/modernizr.js"></script> <!-- Modernizr -->
+
+<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
 </head>
+
 <body id="page-top" class="politics_version" onload="getLocation()">
 
-    
-	
+
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">
-			<img class="img-fluid" src="../images/logo.png" alt="" />
-		</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fa fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav text-uppercase ml-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger active" href="#home">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Features</a>
-            </li>
-            <!-- <li class="nav-item">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <img class="img-fluid" src="../images/logo.png" alt="" />
+            </a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#services">Features</a>
+                    </li>
+                    <!-- <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
             </li>
 			<li class="nav-item">
@@ -71,27 +73,28 @@
 			<li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#pricing">Pricing</a>
             </li> -->
-			<li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
-            </li>
-          </ul>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
-	
-	<section id="home" class="space" >
-		
-	</section>
+
+    <section id="home" class="space">
+
+    </section>
     <div id="about" class="section wb">
-        
+
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="message-box">
                         <div style='text-align:center;'>
-                            <script type= "text/javascript" src = "../js/state.js"></script>
-                            Select State (with cities):   <select id="country" name ="country"></select> </br></br>
-                            Select City: <select name ="state" id ="state"></select>  </br> </br> <hr/>
+                            <script type="text/javascript" src="../js/state.js"></script>
+                            Select State (with cities): <select id="country" name="country"></select> </br></br>
+                            Select City: <select name="state" id="state"></select> </br> </br>
+                            <hr />
                         </div>
 
                         <script language="javascript">
@@ -99,11 +102,10 @@
                             populateCountries("country2");
                             populateCountries("country2");
                         </script>
-                         
-
-                        
-
-                        
+                        <div>
+                            <p id="destn"></p>
+                            <p id="time"></p>
+                        </div>
                     </div><!-- end messagebox -->
                 </div><!-- end col -->
 
@@ -111,7 +113,7 @@
                     <div class="right-box-pro wow fadeIn">
                         <div id="mapholder"></div>
 
-                            <script>
+                        <script>
                             var x = document.getElementById("demo");
 
                             function getLocation() {
@@ -125,14 +127,14 @@
                             function showPosition(position) {
                                 var latlon = position.coords.latitude + "," + position.coords.longitude;
                                 var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
-                                +latlon+"&zoom=14&size=600x450&key=AIzaSyB87_cFp6ribX3SSpwzmaDvxrdPC6rLyQ4";
-                                document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+                                    + latlon + "&zoom=14&size=600x450&key=AIzaSyAiotsKNVBO32IKBBfLkyJX10FfQqwLXys";
+                                document.getElementById("mapholder").innerHTML = "<img src='" + img_url + "'>";
                             }
                             //To use this code on your website, get a free API key from Google.
                             //Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 
                             function showError(error) {
-                                switch(error.code) {
+                                switch (error.code) {
                                     case error.PERMISSION_DENIED:
                                         x.innerHTML = "User denied the request for Geolocation."
                                         break;
@@ -147,45 +149,45 @@
                                         break;
                                 }
                             }
-                            </script>
+                        </script>
 
-                        
-                        
+
+
                     </div><!-- end media -->
                 </div><!-- end col -->
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end section -->
     <div id="reciept" class="section wb">
-        
+
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="message-box">
-                         
 
-                        
 
-                        
+
+
+
                     </div><!-- end messagebox -->
                 </div><!-- end col -->
 
-                
+
             </div><!-- end row -->
         </div><!-- end container -->
     </div>
 
-	
-    
-	
-	
 
-    
+
+
+
+
+
 
     <div class="copyrights">
         <div class="container">
             <div class="footer-distributed">
-				<a href="#"><img src="../images/logo.png" alt="" /></a>
+                <a href="#"><img src="../images/logo.png" alt="" /></a>
                 <div class="footer-center">
                     <p class="footer-links">
                         <a href="#">Home</a>
@@ -195,8 +197,8 @@
                         <a href="#">Faq</a>
                         <a href="#">Contact</a>
                     </p>
-                    <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">OnNext</a> Design By : 
-					<a href="https://html.design/">html design</a></p>
+                    <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">OnNext</a> Design By :
+                        <a href="https://html.design/">html design</a></p>
                 </div>
             </div>
         </div><!-- end container -->
@@ -206,18 +208,18 @@
 
     <!-- ALL JS FILES -->
     <script src="../js/all.js"></script>
-	<!-- Camera Slider -->
-	<script src="../js/jquery.mobile.customized.min.js"></script>
-	<script src="../js/jquery.easing.1.3.js"></script> 
-	<script src="../js/parallaxie.js"></script>
-	<script src="../js/headline.js"></script>
-	<!-- Contact form JavaScript -->
+    <!-- Camera Slider -->
+    <script src="../js/jquery.mobile.customized.min.js"></script>
+    <script src="../js/jquery.easing.1.3.js"></script>
+    <script src="../js/parallaxie.js"></script>
+    <script src="../js/headline.js"></script>
+    <!-- Contact form JavaScript -->
     <script src="../js/jqBootstrapValidation.js"></script>
     <script src="../js/contact_me.js"></script>
     <!-- ALL PLUGINS -->
     <script src="../js/custom.js"></script>
     <script src="../js/jquery.vide.js"></script>
-     <script>
+    <script>
         var data = localStorage.getItem("event");
 
         function getDateTime() {
@@ -234,15 +236,28 @@
             };
 
         }
-        function getName(){
+        function getName() {
             return data.name;
         }
 
-        
+
     </script>
-
-
-
-
+    <script>
+        var eventDetails = {};
+        function setData(eventDetail) {
+            $('#destn').innerHTML = eventDetail.destn;
+            $('#time').innerHTML = eventDetail.dateTime;
+        }
+        $.ajax({
+            url: "http://localhost:8080/api/eventSearchApi/?string=" + localStorage.eventName,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                eventDetails = data.items;
+                setData(eventDetails);
+            }
+        });
+    </script>
 </body>
+
 </html>

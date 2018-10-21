@@ -106,6 +106,7 @@ app.get('/', indexController.getHomePage);
 
 app.get('/events1', passportConfig.isAuthenticated, eventsController.getEvents1);
 app.get('/events2', passportConfig.isAuthenticated, eventsController.getEvents2);
+app.get('/optimize', eventsController.getOptimize);
 
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);

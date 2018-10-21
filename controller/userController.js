@@ -21,7 +21,6 @@ exports.postLogin = (req, res, next) => {
         return res.redirect('/login');
     }
 
-    //unknown strategy
     passport.authenticate('local', (err, user, info) => {
         if (err) { return next(err); }
         if (!user) {
