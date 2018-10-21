@@ -75,6 +75,9 @@
                     <!-- <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
             </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -84,8 +87,8 @@
         <div class="heading">
             <h1>Event Based Travel</h1>
             <h3 class="cd-headline clip is-full-width">
-                <input class="eventbutton" name="search" id="search" type="text" placeholder="Search Event" required="required"
-                    data-validation-required-message="Please enter Event" style="width:30%;border-radius: 10px">
+                <select class="eventbutton" name="search" id="search" type="text" placeholder="Search Event" required="required"
+                    style="width:30%;border-radius: 10px"></select>
                 <div class="btn-ber" id="searchButton">
                     <a class="get_btn hvr-bounce-to-top" onclick="searchButton" href="/events2">Search</a>
                 </div>
@@ -212,31 +215,46 @@
     <!-- ALL PLUGINS -->
     <script src="../js/custom.js"></script>
     <script src="../js/jquery.vide.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- <script>
+        $('document').ready(function () {
+            $("#search").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "http://localhost:8080/api/listEventsApi/?string=" + $("#search").val(),
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            response(data.items);
+                        }
+                    });
+                },
+                select: function(event,ui){
+                    console.log(ui.event);
+                    $("#search").val();
+                }
+            });
 
-
-        $("#search").autocomplete({
-
-            source: function (request, response) {
-                $.ajax({
-                    url: "http://localhost:8080/api/eventSearch",
-                    type: "GET",
-                    dataType: "json",
-                    success: function (data) {
-                        response($.map(data.items, function (item) {
-                            var res = { value: item, data: item.name };
-                            console.log(res);
-                            return res;
-                        }));
-                    }
-                });
-            }
+            $("#searchButton").click(function () {
+                localStorage.setItem("event", $('#search').value());
+            });
         });
-
-        $("#searchButton").click(function () {
-            localStorage.setItem("event", $('#search').value());
+    </script> -->
+    <script>
+        $('document').ready(function () {
+            $.ajax({
+                url: "http://localhost:8080/api/listEventsApi/?string=",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    data.items.forEach(element => {
+                        $('#search').append($("<option></option>")
+                            .attr("value", element)
+                            .text(element));
+                    });
+                }
+            });
         });
     </script>
 </body>

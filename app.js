@@ -104,15 +104,17 @@ var apiController = require('./controller/apiController');
 
 app.get('/', indexController.getHomePage);
 
-app.get('/events1', eventsController.getEvents1);
-app.get('/events2', eventsController.getEvents2);
+app.get('/events1', passportConfig.isAuthenticated, eventsController.getEvents1);
+app.get('/events2', passportConfig.isAuthenticated, eventsController.getEvents2);
 
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
+app.get('/logout', userController.logout);
 
-app.get('/api/eventSearch', apiController.eventSearchApi);
+app.get('/api/eventSearchApi', apiController.eventSearchApi);
+app.get('/api/listEventsApi', apiController.listEventsApi);
 
 
 // catch 404 and forward to error handler
