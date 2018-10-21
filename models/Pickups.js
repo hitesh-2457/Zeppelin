@@ -5,6 +5,6 @@ const pickupsSchema = new mongoose.Schema({
     pickUps: Array
 }, { timestamps: true });
 
-const PickUps = mongoose.model('pickUps', pickupsSchema);
+const PickUps = mongoose.model('pickups', pickupsSchema);
 
 module.exports = PickUps;

@@ -77,7 +77,7 @@ app.use((req, res, next) => {
   if ((
     !req.user
     // ||req.user!==undefined
-    )
+  )
     && req.path !== '/login'
     && req.path !== '/signup'
     && !req.path.match(/^\/auth/)
@@ -103,9 +103,13 @@ app.get('/', indexController.getHomePage);
 app.get('/events1', eventsController.getEvents1);
 app.get('/events2', eventsController.getEvents2);
 
+app.get('/login', userController.getLogin);
+app.post('/login', userController.postLogin);
+app.get('/signup', userController.getSignup);
+app.post('/signup', userController.postSignup);
+
 app.get('/api/eventSearch', apiController.eventSearchApi);
 
-app.get('/login', userController.getLogin);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
