@@ -1,22 +1,20 @@
 var express = require('express');
-var controller = express.Router();
+var router = express.Router();
 
 /* GET home page. */
-controller.get('/eventSearch', function (req, res, next) {
+router.get('/eventSearch', function (req, res, next) {
 
     User.find({}, (err, events) => {
         if (err) { return next(err); }
 
         var eventMap = {};
         events.forEach(function (event) {
-            eventMap[event._id] = event.eventName;
+            eventMap[event._id] = event;
         });
 
         res.send(eventMap);
     });
 
 });
-
-
 
 module.exports = router;

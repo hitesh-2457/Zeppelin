@@ -6,6 +6,7 @@ const logger = require('morgan');
 const chalk = require('chalk');
 const errorHandler = require('errorhandler');
 const lusca = require('lusca');
+const dotenv = require('dotenv');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('express-flash');
 const path = require('path');
@@ -18,11 +19,16 @@ const sass = require('node-sass-middleware');
 var createError = require('http-errors');
 
 var app = express();
+dotenv.load({ path: '.env' });
 
 // view engine setup
 app.set('host', process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0');
 app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080);
+
 app.set('views', path.join(__dirname, 'views'));
+app.set('/public', express.static('public'));
+
+app.set('view engine', 'jade');
 
 app.use(expressStatusMonitor());
 app.use(compression());
@@ -86,7 +92,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var eventsRouter = require('./routes/events');
-var apiController = require('./controller/api');
+var apiController = require('./controller/apiController');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
