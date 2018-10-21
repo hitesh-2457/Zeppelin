@@ -243,6 +243,7 @@
     </script> -->
     <script>
         $('document').ready(function () {
+
             $.ajax({
                 url: "http://localhost:8080/api/listEventsApi/?string=",
                 type: "GET",
@@ -255,6 +256,11 @@
                     });
                 }
             });
+
+            $("#searchButton").click(function () {
+                localStorage.setItem("event", $('#search').value());
+            });
+            
         });
     </script>
 </body>
