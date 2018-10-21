@@ -18,8 +18,20 @@ const sass = require('node-sass-middleware');
 
 var createError = require('http-errors');
 
+const passportConfig = require('./config/passport');
+
 var app = express();
 dotenv.load({ path: '.env' });
+
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useNewUrlParser', true);
+mongoose.connect(process.env.MONGODB_URI);
+mongoose.connection.on('error', (err) => {
+  console.error(err);
+  console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
+  process.exit();
+});
 
 // view engine setup
 app.set('host', process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0');
@@ -55,14 +67,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-
-app.use((req, res, next) => {
-  if (req.path === '/api/upload') {
-    next();
-  } else {
-    lusca.csrf()(req, res, next);
-  }
-});
 
 app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
@@ -102,7 +106,6 @@ app.get('/', indexController.getHomePage);
 
 app.get('/events1', eventsController.getEvents1);
 app.get('/events2', eventsController.getEvents2);
-app.get('/optimize', eventsController.getOptimize);
 
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);

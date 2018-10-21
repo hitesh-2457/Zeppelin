@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const eventsSchema = new mongoose.Schema({
-    name: String,
-    destn: String,
-    dateTime: Date,
-    duration: Number,
-    state: String,
-    city: Array
+    name: { type: String },
+    destn: { type: String },
+    dateTime: { type: Date },
+    duration: { type: Number },
+    state: { type: String },
+    city: { type: Array }
 }, { timestamps: true });
 
 const Events = mongoose.model('events', eventsSchema);

@@ -6,7 +6,7 @@ exports.getLogin = (req, res) => {
     if (req.user) {
         return res.redirect('/');
     }
-    res.render('account/login');
+    res.render('account/signup');
 };
 
 exports.postLogin = (req, res, next) => {
@@ -21,6 +21,7 @@ exports.postLogin = (req, res, next) => {
         return res.redirect('/login');
     }
 
+    //unknown strategy
     passport.authenticate('local', (err, user, info) => {
         if (err) { return next(err); }
         if (!user) {
@@ -68,7 +69,9 @@ exports.postSignup = (req, res, next) => {
 
     const user = new User({
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        name: req.body.name,
+        phoneNumber: req.body.phoneNumber
     });
 
     User.findOne({ email: req.body.email }, (err, existingUser) => {
@@ -77,9 +80,6 @@ exports.postSignup = (req, res, next) => {
             req.flash('errors', { msg: 'Account with that email address already exists.' });
             return res.redirect('/signup');
         }
-
-        user.name = req.body.name;
-        user.phoneNumber = req.body.phoneNumber;
 
         user.save((err) => {
             if (err) { return next(err); }

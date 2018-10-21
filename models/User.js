@@ -4,11 +4,11 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
     email: { type: String, unique: true },
-    password: String,
-    passwordResetToken: String,
-    passwordResetExpires: Date,
-    name: String,
-    phoneNumber: Number
+    password: { type: String },
+    passwordResetToken: { type: String },
+    passwordResetExpires: { type: Date },
+    name: { type: String },
+    phoneNumber: { type: Number }
 }, { timestamps: true });
 
 userSchema.pre('save', function save(next) {
@@ -41,6 +41,6 @@ userSchema.methods.gravatar = function gravatar(size) {
     return `https://gravatar.com/avatar/${md5}?s=${size}&d=retro`;
 };
 
-const User = mongoose.model('user', userSchema);
+const User = mongoose.model('users', userSchema);
 
 module.exports = User;
