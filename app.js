@@ -16,12 +16,6 @@ const expressStatusMonitor = require('express-status-monitor');
 const sass = require('node-sass-middleware');
 
 var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -89,8 +83,15 @@ app.use((req, res, next) => {
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var eventsRouter = require('./routes/events');
+var apiController = require('./controller/api');
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/events',eventsRouter);
+app.use('/api',apiController);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
