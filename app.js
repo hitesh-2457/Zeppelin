@@ -94,6 +94,7 @@ var usersRouter = require('./routes/users');
 var eventsRouter = require('./routes/events');
 var apiController = require('./controller/apiController');
 
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/events1',eventsRouter);

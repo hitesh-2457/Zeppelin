@@ -89,9 +89,9 @@
 		<div class="heading">
 			<h1>Event Based Travel</h1>
 			<h3 class="cd-headline clip is-full-width">
-        <input class="eventbutton" id="name" type="text" placeholder="Search Event" required="required" data-validation-required-message="Please enter Event" style="width:30%;border-radius: 10px">
-				<div class="btn-ber">
-					<a class="get_btn hvr-bounce-to-top" href="#">Search</a>
+        <input class="eventbutton" name="search" id="search"  type="text" placeholder="Search Event" required="required" data-validation-required-message="Please enter Event" style="width:30%;border-radius: 10px">
+				<div class="btn-ber" id="searchButton">
+					<a class="get_btn hvr-bounce-to-top" onclick="searchButton" href="/events2">Search</a>
 				</div>
 			</h3>
 		</div>
@@ -132,7 +132,7 @@
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 					</div>
                 </div><!-- end col -->
-				<!-- <!-- <!--  --> <!-- end col -->
+				<!--   --> <!-- end col -->
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end section -->
@@ -144,7 +144,7 @@
             <div class="section-title text-center">
                 <h3>Contact</h3>
 
-            </div><!-- end title -->
+            </div> end title -->
 
             <!-- <div class="row">
                 <div class="col-md-12">
@@ -221,6 +221,34 @@
     <!-- ALL PLUGINS -->
     <script src="../js/custom.js"></script>
     <script src="../js/jquery.vide.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+   <script>
+      
+           
+    $("#search").autocomplete({
+               
+        source:function(request,response){
+            $.ajax({
+                url:"http://localhost/api/eventSearch",
+                type:"GET",
 
+                dataType:"json",
+                success:function(data)
+                {
+                    result($.map(data, function(item){
+                        
+                        return { value: data, data:data.eventName};
+                        //return item;
+                    }));
+                }
+            });
+        }
+    });
+
+    $("#searchButton").click(function(){
+        localStorage.setItem("event",$('#search').value());
+    });
+    </script>
 </body>
 </html>
