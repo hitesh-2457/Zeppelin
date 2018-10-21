@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router();
+exports.eventSearchApi = function (req, res, next) {
 
-/* GET home page. */
-router.get('/eventSearch', function (req, res, next) {
+    var filter = {};
+    if (req.body.search)
+        filter = { name: '\/req.body.search\/i' };
 
-    User.find({}, (err, events) => {
+    User.find(filter, (err, events) => {
         if (err) { return next(err); }
 
         var eventMap = {};
@@ -15,6 +15,4 @@ router.get('/eventSearch', function (req, res, next) {
         res.send(eventMap);
     });
 
-});
-
-module.exports = router;
+};

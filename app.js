@@ -74,12 +74,16 @@ app.use((req, res, next) => {
 
 app.use((req, res, next) => {
   // After successful login, redirect back to the intended page
-  if (!req.user
+  if ((
+    !req.user
+    // ||req.user!==undefined
+    )
     && req.path !== '/login'
     && req.path !== '/signup'
     && !req.path.match(/^\/auth/)
     && !req.path.match(/\./)) {
     req.session.returnTo = req.originalUrl;
+    // res.redirect('/login');
   } else if (req.user
     && (req.path === '/account' || req.path.match(/^\/api/))) {
     req.session.returnTo = req.originalUrl;
@@ -89,16 +93,19 @@ app.use((req, res, next) => {
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var eventsRouter = require('./routes/events');
+var indexController = require('./controller/indexController');
+var userController = require('./controller/userController');
+var eventsController = require('./controller/eventController');
 var apiController = require('./controller/apiController');
 
+app.get('/', indexController.getHomePage);
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/events1',eventsRouter);
-app.use('/api',apiController);
+app.get('/events1', eventsController.getEvents1);
+app.get('/events2', eventsController.getEvents2);
+
+app.get('/api/eventSearch', apiController.eventSearchApi);
+
+app.get('/login', userController.getLogin);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

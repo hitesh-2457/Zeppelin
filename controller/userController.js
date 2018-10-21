@@ -55,6 +55,8 @@ exports.postSignup = (req, res, next) => {
     req.assert('email', 'Email is not valid').isEmail();
     req.assert('password', 'Password must be at least 4 characters long').len(4);
     req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
+    req.assert('name', 'Name cannot be empty.');
+    req.assert('phoneNumber', 'Phone number cannot be empty.');
     req.sanitize('email').normalizeEmail({ gmail_remove_dots: false });
 
     const errors = req.validationErrors();
@@ -75,6 +77,10 @@ exports.postSignup = (req, res, next) => {
             req.flash('errors', { msg: 'Account with that email address already exists.' });
             return res.redirect('/signup');
         }
+
+        user.name = req.body.name;
+        user.phoneNumber = req.body.phoneNumber;
+
         user.save((err) => {
             if (err) { return next(err); }
             req.logIn(user, (err) => {

@@ -8,7 +8,6 @@ const userSchema = new mongoose.Schema({
     passwordResetToken: String,
     passwordResetExpires: Date,
     name: String,
-    gender: String,
     phoneNumber: Number
 }, { timestamps: true });
 
@@ -42,6 +41,6 @@ userSchema.methods.gravatar = function gravatar(size) {
     return `https://gravatar.com/avatar/${md5}?s=${size}&d=retro`;
 };
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('user', userSchema);
 
 module.exports = User;
