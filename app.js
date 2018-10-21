@@ -96,7 +96,7 @@ var apiController = require('./controller/apiController');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/events',eventsRouter);
+app.use('/events1',eventsRouter);
 app.use('/api',apiController);
 
 // catch 404 and forward to error handler
