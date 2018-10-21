@@ -102,6 +102,7 @@ app.get('/', indexController.getHomePage);
 
 app.get('/events1', eventsController.getEvents1);
 app.get('/events2', eventsController.getEvents2);
+app.get('/optimize', eventsController.getOptimize);
 
 app.get('/api/eventSearch', apiController.eventSearchApi);
 
