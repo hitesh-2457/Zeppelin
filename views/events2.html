@@ -42,7 +42,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+            <a class="navbar-brand js-scroll-trigger" href="/">
                 <img class="img-fluid" src="../images/logo.png" alt="" />
             </a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -53,14 +53,14 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger active" href="#home">Home</a>
+                        <a class="nav-link js-scroll-trigger active" href="/" style="color:#F6A526;">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#about">About Us</a>
+                        <a class="nav-link js-scroll-trigger" href="optimize" style="color:#F6A526;">About Us</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#services">Features</a>
-                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#services" style="color:#F6A526;">Features</a>
+                    </li> -->
                     <!-- <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
             </li>
@@ -73,27 +73,27 @@
 			<li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#pricing">Pricing</a>
             </li> -->
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
     </nav>
-
-    <section id="home" class="space">
-
-    </section>
-    <div id="about" class="section wb">
-
+    <div class="section wb">
+        <br />
+        <br />
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="message-box">
                         <div style='text-align:center;'>
                             <script type="text/javascript" src="../js/state.js"></script>
-                            Select State (with cities): <select id="country" name="country"></select> </br></br>
-                            Select City: <select name="state" id="state"></select> </br> </br>
+                            Select State (with cities): <select id="country" name="country"></select> <br /><br />
+                            Select City: <select name="state" id="state"></select> <br /> <br />
+                            Number of Bookings: <input id="bookings" type="number" value="1" min="1" style="width:50px;">
+                            <a class="get_btn hvr-bounce-to-top">Reserve</a>
+                            <!-- Total Cost: <div id="cost"></div> -->
                             <hr />
                         </div>
 
@@ -103,8 +103,9 @@
                             populateCountries("country2");
                         </script>
                         <div>
-                            <p id="destn"></p>
-                            <p id="time"></p>
+                            <div id="destn"></div>
+                            <div id="time"></div>
+                            <div id="disclaimer"></div>
                         </div>
                     </div><!-- end messagebox -->
                 </div><!-- end col -->
@@ -127,8 +128,8 @@
                             function showPosition(position) {
                                 var latlon = position.coords.latitude + "," + position.coords.longitude;
                                 var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
-                                +latlon+"&zoom=14&size=600x450&key=AIzaSyAiotsKNVBO32IKBBfLkyJX10FfQqwLXys";
-                                document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+                                    + latlon + "&zoom=14&size=600x450&key=AIzaSyAiotsKNVBO32IKBBfLkyJX10FfQqwLXys";
+                                document.getElementById("mapholder").innerHTML = "<img src='" + img_url + "'>";
                             }
                             //To use this code on your website, get a free API key from Google.
                             //Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
@@ -176,13 +177,6 @@
             </div><!-- end row -->
         </div><!-- end container -->
     </div>
-
-
-
-
-
-
-
 
     <div class="copyrights">
         <div class="container">
@@ -244,17 +238,17 @@
     </script>
     <script>
         var eventDetails = {};
-        function setData(eventDetail) {
-            $('#destn').innerHTML = eventDetail.destn;
-            $('#time').innerHTML = eventDetail.dateTime;
-        }
         $.ajax({
             url: "http://localhost:8080/api/eventSearchApi/?string=" + localStorage.eventName,
             type: "GET",
             dataType: "json",
             success: function (data) {
-                eventDetails = data.items;
-                setData(eventDetails);
+                eventDetails = data.items[0];
+                console.log(eventDetails + " " + data.bookingCount);
+                $('#destn').html("Destination: " + eventDetails.destn);
+                $('#time').html("Date and Time: " + new Date(eventDetails.dateTime));
+                var bookin_needed = data.bookingCount ? (25 - data.bookingCount) : 25;
+                $("#disclaimer").html("Disclaimer: This ride needs " + bookin_needed + " more bookings to be confirmed.");
             }
         });
     </script>
